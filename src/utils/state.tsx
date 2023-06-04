@@ -1,0 +1,1 @@
+export enum AppState { Initial, Loading, LoadComplete, Error }

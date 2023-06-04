@@ -1,0 +1,418 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* #region  /**=========== Primary Color =========== */
+  /* !STARTERCONF Customize these variable, copy and paste from /styles/colors.css for list of colors */
+  --tw-color-primary-50: 240 249 255;
+  --tw-color-primary-100: 224 242 254;
+  --tw-color-primary-200: 186 230 253;
+  --tw-color-primary-300: 125 211 252;
+  --tw-color-primary-400: 56 189 248;
+  --tw-color-primary-500: 14 165 233;
+  --tw-color-primary-600: 2 132 199;
+  --tw-color-primary-700: 3 105 161;
+  --tw-color-primary-800: 7 89 133;
+  --tw-color-primary-900: 12 74 110;
+  --color-primary-50: rgb(var(--tw-color-primary-50));
+  /* #f0f9ff */
+  --color-primary-100: rgb(var(--tw-color-primary-100));
+  /* #e0f2fe */
+  --color-primary-200: rgb(var(--tw-color-primary-200));
+  /* #bae6fd */
+  --color-primary-300: rgb(var(--tw-color-primary-300));
+  /* #7dd3fc */
+  --color-primary-400: rgb(var(--tw-color-primary-400));
+  /* #38bdf8 */
+  --color-primary-500: rgb(var(--tw-color-primary-500));
+  /* #0ea5e9 */
+  --color-primary-600: rgb(var(--tw-color-primary-600));
+  /* #0284c7 */
+  --color-primary-700: rgb(var(--tw-color-primary-700));
+  /* #0369a1 */
+  --color-primary-800: rgb(var(--tw-color-primary-800));
+  /* #075985 */
+  --color-primary-900: rgb(var(--tw-color-primary-900));
+  /* #0c4a6e */
+  /* #endregion  /**======== Primary Color =========== */
+}
+
+@layer base {
+
+  /* inter var - latin */
+  @font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: optional;
+    src: url('/fonts/inter-var-latin.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+      U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212,
+      U+2215, U+FEFF, U+FFFD;
+  }
+
+  .cursor-newtab {
+    cursor: url('/images/new-tab.png') 10 10, pointer;
+  }
+
+  /* .h0 {
+    @apply font-primary text-3xl font-bold md: text-5xl;
+  }
+
+  h1,
+  .h1 {
+    @apply font-primary text-2xl font-bold md: text-4xl;
+  }
+
+  h2,
+  .h2 {
+    @apply font-primary text-xl font-bold md: text-3xl;
+  }
+
+  h3,
+  .h3 {
+    @apply font-primary text-lg font-bold md: text-2xl;
+  }
+
+  h4,
+  .h4 {
+    @apply font-primary text-base font-bold md: text-lg;
+  }
+
+  body,
+  .p {
+    @apply font-primary text-sm md: text-base;
+  } */
+
+
+  .layout {
+    /* 1100px */
+    /* max-width: 75.75rem; */
+    @apply mx-auto w-11/12;
+  }
+
+  /* .bg-dark a.custom-link {
+    @apply border-gray-200 hover: border-gray-200/0;
+  } */
+
+  /* Class to adjust with sticky footer */
+  .min-h-main {
+    @apply min-h-[calc(100vh-56px)];
+  }
+}
+
+@layer utilities {
+  .animated-underline {
+    background-image: linear-gradient(#33333300, #33333300),
+      linear-gradient(to right,
+        var(--color-primary-400),
+        var(--color-primary-500));
+    background-size: 100% 2px, 0 2px;
+    background-position: 100% 100%, 0 100%;
+    background-repeat: no-repeat;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .animated-underline {
+      transition: 0.3s ease;
+      transition-property: background-size, color, background-color,
+        border-color;
+    }
+  }
+
+  .animated-underline:hover,
+  .animated-underline:focus-visible {
+    background-size: 0 2px, 100% 2px;
+  }
+
+  .bg-input input {
+    background: rgb(var(--tw-color-slate-300));
+  }
+
+  .bg-input input:hover {
+    background: rgb(var(--tw-color-slate-300));
+  }
+}
+
+/* Table */
+
+.dark .ant-empty-description {
+  color: theme('colors.white')
+}
+
+.dark .ant-table-thead .ant-table-cell {
+  background: theme('colors.zinc.800') !important;
+  padding: 15px;
+  border-color: theme('colors.zinc.600') !important;
+}
+
+.dark .ant-table-cell {
+  background: theme('colors.zinc.800') !important;
+}
+
+.ant-table-tbody>tr>td {
+  border: none
+}
+
+.dark .ant-pagination a {
+  background: theme('colors.zinc.800') !important;
+  border-color: theme('colors.zinc.600') !important;
+  color: theme('colors.white')
+}
+
+.dark .ant-pagination-item-link {
+  background: theme('colors.zinc.800') !important;
+  border-color: theme('colors.zinc.600') !important;
+  color: theme('colors.white')
+}
+
+/* Select */
+
+.ant-select .ant-select-selector {
+  border-radius: 15px !important;
+  height: 55px !important;
+  padding: 10px !important;
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+  min-width: 200px !important;
+  background-color: transparent !important;
+  font-size: large;
+  font-weight: bold;
+}
+
+.ant-select-selection-item {
+  min-width: 200px !important;
+  font-size: large;
+  font-weight: bold;
+}
+
+.ant-select .ant-select-arrow {
+  position: 'absolute' !important;
+  right: 20px !important;
+}
+
+.ant-select.dark .ant-select-selector {
+  border-color: theme('colors.zinc.500') !important;
+  border-width: 2px;
+  color: theme('colors.zinc.500');
+}
+
+.dark .ant-select-arrow {
+  color: theme('colors.zinc.500');
+}
+
+.ant-select-dropdown {
+  background-color: theme('colors.zinc.100') !important;
+}
+
+/* Input */
+
+.ant-input {
+  background-color: transparent !important;
+}
+
+.dark .ant-input {
+  color: theme('colors.white');
+}
+
+.ant-input-affix-wrapper {
+  background-color: transparent !important;
+}
+
+.dark .ant-input-affix-wrapper {
+  color: theme('colors.white');
+}
+
+/* Radio */
+
+.ant-radio-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+}
+
+.ant-radio-button-wrapper {
+  background-color: transparent;
+  min-height: 54px !important;
+  min-width: 50px !important;
+  padding: 10px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-width: 2px !important;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.ant-radio-button-wrapper-checked {
+  font-weight: bold;
+  color: white;
+}
+
+.ant-radio-button-wrapper:first-child {
+  border-top-left-radius: 10px !important;
+  border-bottom-left-radius: 10px !important;
+  border-right: none !important;
+}
+
+.ant-radio-button-wrapper:last-child {
+  border-top-right-radius: 10px !important;
+  border-bottom-right-radius: 10px !important;
+  border-left: none !important;
+}
+
+.ant-radio-group {
+  background-color: transparent;
+  display: flex;
+  flex-direction: row;
+  border-radius: 10px;
+}
+
+.dark .ant-radio-button-wrapper {
+  border-color: theme('colors.zinc.500') !important;
+}
+
+.dark .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled) {
+  background: theme('colors.zinc.900');
+  color: white;
+}
+
+.dark .ant-radio-button-wrapper:not(:first-child)::before {
+  background-color: theme('colors.zinc.500') !important;
+  width: 0px;
+}
+
+.dark .ant-radio-button-wrapper {
+  color: theme('colors.zinc.500');
+}
+
+/* Collapse */
+
+.ant-collapse {
+  background-color: transparent !important;
+  border: none;
+}
+
+.ant-collapse-header {
+  border: none !important;
+  font-weight: bold;
+  font-size: large;
+}
+
+.ant-collapse-borderless>.ant-collapse-item {
+  border-bottom: none;
+}
+
+.dark .ant-collapse-header {
+  color: white !important;
+}
+
+.ant-collapse-header .ant-collapse-item {
+  border: none !important;
+}
+
+
+/* Tabs */
+
+.dark .ant-tabs-nav.wrap {
+  border: none;
+}
+
+
+/* Drawer */
+
+.dark .ant-drawer-header {
+  border-color: theme('colors.zinc.500');
+}
+
+.dark .ant-drawer-title {
+  color: white;
+}
+
+.dark .ant-drawer-close {
+  color: white;
+}
+
+/* Upload */
+
+.dark .ant-upload-text-icon {
+  filter: invert(1) sepia(100) saturate(0) hue-rotate(0deg) !important;
+  color: theme('colors.white') !important;
+}
+
+.dark .ant-upload-list-item-name {
+  color: theme('colors.white') !important;
+}
+
+.ant-upload-list-item:hover .ant-upload-list-item-info {
+  background-color: transparent !important;
+}
+
+/* Button */
+.dark .ant-btn.ant-btn-default {
+  background-color: theme('colors.zinc.500');
+  min-height: 50px;
+  border: none;
+  border-radius: 10px;
+  color: theme('colors.white') !important;
+  font-size: large;
+  font-weight: bold;
+}
+
+.dark .ant-btn {
+  background-color: theme('colors.zinc.500') !important;
+  min-height: 50px;
+  border: none;
+  border-radius: 10px;
+  color: theme('colors.white') !important;
+  font-size: large;
+  font-weight: bold;
+}
+
+.ant-btn:hover.icon {
+  background: theme('colors.transparent') !important;
+}
+
+.ant-btn.icon {
+  background: theme('colors.transparent') !important;
+}
+
+/* Layout */
+
+.ant-layout {
+  /* background-color: transparent; */
+}
+
+/* Tab */
+.dark .ant-tabs-tab .ant-tabs-tab-btn {
+  color: theme('colors.zinc.500') !important
+}
+
+.dark .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: white !important
+}
+
+.dark .ant-tabs-ink-bar {
+  position: absolute;
+  background: white !important;
+  pointer-events: none;
+}
+
+.dark .ant-tabs-left>.ant-tabs-content-holder,
+.ant-tabs-left>div>.ant-tabs-content-holder {
+  margin-left: -1px;
+  border-left: 1px solid gray !important;
+}
+
+.dark .ant-tabs-top>.ant-tabs-nav::before,
+.ant-tabs-bottom>.ant-tabs-nav::before,
+.ant-tabs-top>div>.ant-tabs-nav::before,
+.ant-tabs-bottom>div>.ant-tabs-nav::before {
+  position: absolute;
+  right: 0;
+  left: 0;
+  border-bottom: 1px solid theme('colors.zinc.500') !important;
+  content: '';
+}

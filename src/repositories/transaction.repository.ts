@@ -59,7 +59,7 @@ export default class TransactionRepository {
     try {
       const { accessToken, offset, limit, keyword, orderBy, orderOption, tokenId, collectionId, userId } = data
 
-      const response = await api.get<GetTransactionListResponse, AxiosResponse<ApiResponse<GetTransactionListResponse>>>(`${API_URL}/v1/transaction?offset=${offset}&limit=${limit}&keyword=${keyword}&order_by=${orderBy}&order_option=${orderOption}${collectionId ? `&collection_id=${collectionId}` : ``}${tokenId ? `&token_id=${tokenId}` : ``}${tokenId ? `&token_id=${tokenId}` : ``}${userId ? `&user_id=${userId}` : ``}`, {
+      const response = await api.get<GetTransactionListResponse, AxiosResponse<ApiResponse<GetTransactionListResponse>>>(`${API_URL}/v1/transaction?offset=${offset}&limit=${limit}&keyword=${keyword}&order_by=${orderBy}&order_option=${orderOption}${collectionId ? `&collection_id=${collectionId}` : ``}${tokenId ? `&token_id=${tokenId}` : ``}${userId ? `&user_id=${userId}` : ``}`, {
         headers: {
           'Content-Type': `multipart/form-data`,
           'Authorization': `Bearer ${accessToken}`

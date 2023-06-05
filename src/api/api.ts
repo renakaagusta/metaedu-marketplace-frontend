@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from 'axios';
 import { camelizeKeys } from 'humps';
 
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL ?? 'http://18.236.86.21:8000/api/';
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export const api = axios.create({
   baseURL: BASE_URL,

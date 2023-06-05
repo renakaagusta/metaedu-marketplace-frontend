@@ -498,8 +498,8 @@ function TokenDetailPage(props: TokenDetailPageProps) {
               (tokenState.tokenDetailState == AppState.LoadComplete && ownershipState.ownershipListState == AppState.LoadComplete) && <ALayout className='bg-transparent'><Row>
                 <Col span={10}>
                   <ALayout className="shadow-lg bg-slate-100 flex justify-center">
-                    {token && <ALayout className="h-[400px] min-w-[400px] min-h-[400px] max-h-[400px]">
-                      <MTokenImage token={token} />
+                    {token && <ALayout className="h-[500px]">
+                      <MTokenImage token={token} height={500} />
                     </ALayout>}
                   </ALayout>
                   <ALayout className={`rounded-lg border mt-5 border-1 border-solid ${theme === 'dark' ? 'border-zinc-500 bg-zinc-800' : 'border-slate-400 bg-white'}`}>

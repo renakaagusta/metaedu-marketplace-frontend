@@ -1,7 +1,6 @@
 import { UploadOutlined } from '@ant-design/icons';
-import { Form, Input, message, UploadFile, UploadProps } from 'antd';
+import { Form, Input, UploadFile, UploadProps } from 'antd';
 import Dragger from 'antd/lib/upload/Dragger';
-import { UploadChangeParam } from 'antd/lib/upload/interface';
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
@@ -42,17 +41,6 @@ function ProfileEditPage(props: ProfileEditPageProps) {
   const uploadProps: UploadProps = {
     name: 'file',
     multiple: false,
-    onChange(info: UploadChangeParam<UploadFile>) {
-      const { status } = info.file;
-      if (status === 'done') {
-        message.success(`${info.file.name} file uploaded successfully.`);
-      } else if (status === 'error') {
-        message.error(`${info.file.name} file upload failed.`);
-      }
-    },
-    onDrop(e) {
-      console.log('Dropped files', e.dataTransfer.files);
-    },
   };
 
   const normFile = (e: any) => {

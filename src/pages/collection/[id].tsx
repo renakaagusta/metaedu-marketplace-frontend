@@ -137,7 +137,7 @@ function CollectionDetailPage(props: CollectionDetailPageProps) {
                   <AText className={`text-3xl font-bold ${textColor}`}>{collection?.title?.string ?? '-'}</AText>
                   <AText className={`text-lg mt-1 ${textColor}`}>By <span className="font-bold">{collection?.creator.name !== '' ? collection?.creator.name : collection?.creator.address}</span></AText>
                   <AText className={`text-lg mt-1 ${textColor}`}>Items
-                    <span className="font-bold mx-1 mr-2">4</span>
+                    <span className="font-bold mx-1 mr-2">{collection?.numberOfItems.int64}</span>
                     ·
                     <span className="ml-2">Created</span>
                     <span className="font-bold ml-1">{dayjs(collection?.createdAt.time).format('D MMMM YYYY')}</span>

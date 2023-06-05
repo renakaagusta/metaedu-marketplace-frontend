@@ -1,7 +1,6 @@
 import { UploadOutlined } from '@ant-design/icons';
-import { Form, Input, message, Radio, UploadFile, UploadProps } from 'antd';
+import { Form, Input, Radio, UploadFile, UploadProps } from 'antd';
 import TextArea from 'antd/lib/input/TextArea';
-import { UploadChangeParam } from 'antd/lib/upload';
 import Dragger from 'antd/lib/upload/Dragger';
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
@@ -49,17 +48,6 @@ function TokenAddPage(props: TokenAddPageProps) {
   const uploadProps: UploadProps = {
     name: 'file',
     multiple: false,
-    onChange(info: UploadChangeParam<UploadFile>) {
-      const { status } = info.file;
-      if (status === 'done') {
-        message.success(`${info.file.name} file uploaded successfully.`);
-      } else if (status === 'error') {
-        message.error(`${info.file.name} file upload failed.`);
-      }
-    },
-    onDrop(e) {
-      console.log('Dropped files', e.dataTransfer.files);
-    },
   };
 
   useEffect(() => {

@@ -130,10 +130,10 @@ function* submitToken(data: SubmitTokenParams) {
       payload: AppState.LoadComplete
     })
 
-    // yield put({
-    //   type: TokenActionTypes.SET_TOKEN_SUBMIT,
-    //   payload: (response.data as SubmitTokenResponse).token.id
-    // })
+    yield put({
+      type: TokenActionTypes.SET_TOKEN_SUBMIT,
+      payload: (response.data as SubmitTokenResponse).token.id
+    })
 
     message.success('Token has been minted successfully')
 

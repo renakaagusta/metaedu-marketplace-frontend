@@ -41,6 +41,10 @@ export default function MTokenImage(props: MTokenImage) {
       </video>
     }
   } else {
-    return <AImage className='w-full min-w-[100%]' alt="cover" src={token?.image} />
+    if (height) {
+      return <AImage className={`object-none h-[${height}px]`} alt="token" src={token?.image} />
+    } else {
+      return <AImage className="min-h-full" alt="token" src={token?.image} />
+    }
   }
 }

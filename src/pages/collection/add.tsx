@@ -1,7 +1,6 @@
 import { UploadOutlined } from '@ant-design/icons';
-import { Form, Input, message, Radio, UploadFile, UploadProps } from 'antd';
+import { Form, Input, Radio, UploadFile, UploadProps } from 'antd';
 import TextArea from 'antd/lib/input/TextArea';
-import { UploadChangeParam } from 'antd/lib/upload';
 import Dragger from 'antd/lib/upload/Dragger';
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
@@ -47,17 +46,6 @@ function CollectionAddPage(props: CollectionAddPageProps) {
   const uploadProps: UploadProps = {
     name: 'file',
     multiple: false,
-    onChange(info: UploadChangeParam<UploadFile>) {
-      const { status } = info.file;
-      if (status === 'done') {
-        message.success(`${info.file.name} file uploaded successfully.`);
-      } else if (status === 'error') {
-        message.error(`${info.file.name} file upload failed.`);
-      }
-    },
-    onDrop(e) {
-      console.log('Dropped files', e.dataTransfer.files);
-    },
   };
 
   const normFile = (e: any) => {
@@ -135,7 +123,7 @@ function CollectionAddPage(props: CollectionAddPageProps) {
             >
               <AText className={'mt-5 text-lg font-bold ' + clsx(textColor)}>Create new collection</AText>
               <AText className={'text-lg ' + clsx(textColor)}>Thumbnail</AText>
-              <AText className={'text-sm ' + clsx(textColor)}>For types supported: JPG, PNG, GIF, SVG, MP4, WEBM, MP3</AText>
+              <AText className={'text-sm ' + clsx(textColor)}>For types supported: JPG, PNG, GIF, SVG</AText>
               <Form.Item name="thumbnail" valuePropName="fileList" getValueFromEvent={normFile} rules={[{ required: true, message: 'Please input collection image' }]}>
                 <Dragger className={`${theme} mt-3`} style={{ backgroundColor: theme == 'dark' ? 'transparent' : 'white' }} {...uploadProps}>
                   <ALayout className="flex flex-col bg-transparent">
@@ -147,7 +135,7 @@ function CollectionAddPage(props: CollectionAddPageProps) {
                 </Dragger>
               </Form.Item>
               <AText className={'text-lg ' + clsx(textColor)}>Cover</AText>
-              <AText className={'text-sm ' + clsx(textColor)}>For types supported: JPG, PNG, GIF, SVG, MP4, WEBM, MP3</AText>
+              <AText className={'text-sm ' + clsx(textColor)}>For types supported: JPG, PNG, GIF, SVG, MP4</AText>
               <Form.Item name="cover" valuePropName="fileList" getValueFromEvent={normFile} rules={[{ required: true, message: 'Please input collection image' }]}>
                 <Dragger className='mt-3' style={{ backgroundColor: theme == 'dark' ? 'transparent' : 'white' }} {...uploadProps}>
                   <ALayout className="flex flex-col bg-transparent">

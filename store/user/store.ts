@@ -3,8 +3,8 @@ import { applyMiddleware, createStore, Middleware, StoreEnhancer } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import createSagaMiddleware from 'redux-saga';
 import rootSaga from 'store/token/saga';
+import { UserState } from 'store/user/interfaces';
 
-import { TokenState } from './interfaces';
 import rootReducer from './reducer';
 
 const bindMiddleware = (middleware: Middleware[]): StoreEnhancer => {
@@ -14,7 +14,7 @@ const bindMiddleware = (middleware: Middleware[]): StoreEnhancer => {
   return applyMiddleware(...middleware);
 };
 
-export const makeStore: MakeStore<TokenState> = () => {
+export const makeStore: MakeStore<UserState> = () => {
   const sagaMiddleware = createSagaMiddleware();
 
   const store = createStore(rootReducer, bindMiddleware([sagaMiddleware]));
@@ -24,4 +24,4 @@ export const makeStore: MakeStore<TokenState> = () => {
   return store;
 };
 
-export const wrapper = createWrapper<TokenState>(makeStore, { debug: true });
+export const wrapper = createWrapper<UserState>(makeStore, { debug: true });

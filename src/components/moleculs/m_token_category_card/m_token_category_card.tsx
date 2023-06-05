@@ -6,8 +6,7 @@ import ALayout from "@/components/atoms/a_layout/a_layout";
 import ALink from "@/components/atoms/a_link/a_link";
 import AText from "@/components/atoms/a_text/a_text";
 
-import { TokenCategory } from '@/models/token_category.model';
-
+import TokenCategory from '@/models/token_category.model';
 export interface MTokenCategoryCard {
   tokenCategory: TokenCategory
   theme: string

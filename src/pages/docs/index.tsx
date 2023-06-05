@@ -22,7 +22,7 @@ import ONavBar from '@/components/organigrams/o_navbar/o_navbar';
 import Seo from '@/components/organigrams/o_seo/o_seo';
 
 
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:8000/api/';
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL ?? 'http://18.236.86.21:8000/api/';
 
 function DocsPage(props: StatsPageProps) {
   const { authState, themeState, web3State, transactionState, fractionState, userState, ownershipState, rentalState } = props

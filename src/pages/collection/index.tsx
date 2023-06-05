@@ -15,6 +15,7 @@ import { UserState } from 'store/user/interfaces';
 import { Web3State } from 'store/web3/interfaces';
 
 import Layout from '@/components/moleculs/layout/Layout';
+import OFooter from '@/components/organigrams/o_footer/o_footer';
 import ONavBar from '@/components/organigrams/o_navbar/o_navbar';
 import Seo from '@/components/organigrams/o_seo/o_seo';
 

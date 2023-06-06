@@ -297,10 +297,6 @@ function TokenDetailPage(props: TokenDetailPageProps) {
       return
     }
 
-    if (userState.myUserDataState !== AppState.LoadComplete) {
-      return
-    }
-
     if (tokenState.tokenDetailState === AppState.LoadComplete) {
       return
     }

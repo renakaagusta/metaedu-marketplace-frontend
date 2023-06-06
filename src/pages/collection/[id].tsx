@@ -36,7 +36,6 @@ import { AppState } from '@/utils/state';
 
 function CollectionDetailPage(props: CollectionDetailPageProps) {
   const { authState, themeState, web3State, collectionState, transactionState, fractionState, userState, ownershipState, rentalState, tokenState } = props
-  const { collections } = collectionState
   const { tokens } = tokenState
   const { theme } = themeState
 
@@ -130,8 +129,8 @@ function CollectionDetailPage(props: CollectionDetailPageProps) {
             {
               (collectionState.collectionDetailState == AppState.LoadComplete) && <ALayout className='bg-transparent'>
                 <AImage className='h-[45vh] w-[100vw] object-cover' preview={false} alt="cover" src={collection?.cover.string} />
-                <ALayout className={`absolute top-[40vh] left-[8vw] h-[168px] w-[168px] p-2 rounded-lg bg-${theme}`}>
-                  <AImage className='object-cover' alt="thumbnail" src={collection?.thumbnail.string} />
+                <ALayout className={`absolute top-[34vh] left-[8vw] h-[168px] w-[168px] p-2 rounded-lg bg-${theme}`}>
+                  <AImage className='object-fill max-h-[168px] max-w-[168px]' alt="thumbnail" src={collection?.thumbnail.string} />
                 </ALayout>
                 <ALayout className="px-[8vw] py-[40px] bg-transparent">
                   <AText className={`text-3xl font-bold ${textColor}`}>{collection?.title?.string ?? '-'}</AText>

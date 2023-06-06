@@ -19,11 +19,11 @@ export default function MTokenImage(props: MTokenImage) {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const gltf = useLoader(GLTFLoader, token.image);
 
-    return <primitive object={gltf.scene} scale={0.01} />;
+    return <primitive object={gltf.scene} scale={0.1} />;
   };
 
   if (token.image.includes('.glb')) {
-    return <Canvas shadows dpr={[1, 2]} camera={{ position: [0, 0, 4], fov: 50 }}>
+    return <Canvas shadows>
       <Model />
       <Environment preset="city" />
       <OrbitControls autoRotate />
@@ -42,7 +42,7 @@ export default function MTokenImage(props: MTokenImage) {
     }
   } else {
     if (height) {
-      return <AImage className={`object-none h-[${height}px]`} alt="token" src={token?.image} />
+      return <AImage className={`max-h-[${height}px`} alt="token" src={token?.image} />
     } else {
       return <AImage className="min-h-full" alt="token" src={token?.image} />
     }

@@ -453,7 +453,7 @@ function TokenDetailPage(props: TokenDetailPageProps) {
 
     activityList.push({
       event: EventType.Minting,
-      price: tokenState.token.lastPrice,
+      price: tokenState.token.initialPrice,
       from: undefined,
       to: tokenState.token.creator,
       date: tokenState.token.createdAt.time

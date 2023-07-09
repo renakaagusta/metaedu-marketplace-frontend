@@ -1,24 +1,27 @@
-import { EyeOutlined, LineChartOutlined, SwapOutlined, UserOutlined } from '@ant-design/icons';
+import { ClockCircleOutlined, EyeOutlined, LineChartOutlined, SwapOutlined, UserOutlined } from '@ant-design/icons';
 import clsx from 'clsx';
+import { DateTime } from 'ts-luxon';
 
-import AAvatar from "@/components/atoms/a_avatar/a_avatar"
-import ACard from "@/components/atoms/a_card/a_card"
-import ACol from "@/components/atoms/a_col/a_col"
-import ALayout from "@/components/atoms/a_layout/a_layout"
-import ALink from "@/components/atoms/a_link/a_link"
-import ARow from "@/components/atoms/a_row/a_row"
-import AText from "@/components/atoms/a_text/a_text"
+import AAvatar from "@/components/atoms/a_avatar/a_avatar";
+import ACard from "@/components/atoms/a_card/a_card";
+import ACol from "@/components/atoms/a_col/a_col";
+import ALayout from "@/components/atoms/a_layout/a_layout";
+import ALink from "@/components/atoms/a_link/a_link";
+import ARow from "@/components/atoms/a_row/a_row";
+import AText from "@/components/atoms/a_text/a_text";
 import MTokenImage from '@/components/moleculs/m_token_image/m_token_image';
 
-import Token from "@/models/token.model"
+import Rental from '@/models/rental.model';
+import Token from "@/models/token.model";
 
 export interface MTokenCard {
   token: Token
+  rental?: Rental
   theme: string
 }
 
 export default function MTokenCard(props: MTokenCard) {
-  const { token, theme } = props
+  const { token, rental, theme } = props
 
   const textColor = theme === 'dark' ? 'text-gray-300' : 'text-gray-600';
 
@@ -46,6 +49,12 @@ export default function MTokenCard(props: MTokenCard) {
               </ACol>
             </ARow>
           </ALink>
+          {rental && <>
+            <AText className={`mt-2 ${textColor}`}>Rental period</AText>
+            <ARow className="mt-1">
+              <ACol span={24}><ClockCircleOutlined className="text-lg text-red-500" /><AText className="text-lg text-red-500 font-bold ml-2">{DateTime.fromISO(rental.timestamp.time).toFormat('HH:mm, dd LLLL yyyy')}</AText></ACol>
+            </ARow>
+          </>}
           <ARow className="mt-2" align="top">
             <ACol span={8}>
               <EyeOutlined />

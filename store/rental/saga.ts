@@ -60,6 +60,8 @@ function* fetchMyRentalList(data: GetRentalListParams) {
 
     const response: ApiResponse<GetRentalListResponse> | Error = yield rentalRepository.getRentalList(data.payload)
 
+    console.log('response', response)
+
     if (!isApiResponse(response)) {
       throw response
     }

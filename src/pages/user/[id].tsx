@@ -12,7 +12,6 @@ import { CollectionState } from 'store/collection/interfaces';
 import CollectionActionTypes from 'store/collection/interfaces/actions.interfaces';
 import { FractionState } from 'store/fraction/interfaces';
 import { OwnershipState } from 'store/ownership/interfaces';
-import OwnershipActionTypes from 'store/ownership/interfaces/actions.interfaces';
 import { RootReducerInterface } from 'store/reducer';
 import { RentalState } from 'store/rental/interfaces';
 import RentalActionTypes from 'store/rental/interfaces/actions.interfaces';
@@ -186,7 +185,22 @@ function CollectionDetailPage(props: CollectionDetailPageProps) {
         userId: id
       }
     })
+
+    dispatch({
+      type: RentalActionTypes.GET_RENTAL_BY_OTHER_LIST,
+      payload: {
+        accessToken: authState.accessToken,
+        ownerId: id,
+        offset: 0,
+        limit: 100,
+        keyword: '',
+        orderBy: 'created_at',
+        orderOption: 'DESC',
+      }
+    })
   }
+
+  console.log('rentals', rentalState.rentals)
 
   const fetchTokenList = () => {
     dispatch({
@@ -375,7 +389,7 @@ function CollectionDetailPage(props: CollectionDetailPageProps) {
                       <ARow gutter={[10, 20]}>
                         {
                           ownershipState.ownershipList?.map((ownership) => <ACol lg={6} xs={24} key={`ownership-${ownership.id}`}>
-                            <MTokenCard token={ownership.token} theme={theme} />
+                            <MTokenCard token={ownership.token} rental={rentalState.rentalsByOther?.find((rental) => rental.tokenId === ownership.tokenId && (new Date(rental.timestamp.time).getTime() > new Date().getTime()))} theme={theme} />
                           </ACol>)
                         }
                       </ARow>

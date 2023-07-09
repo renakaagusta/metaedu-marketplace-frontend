@@ -12,6 +12,7 @@ import { CollectionState } from 'store/collection/interfaces';
 import CollectionActionTypes from 'store/collection/interfaces/actions.interfaces';
 import { FractionState } from 'store/fraction/interfaces';
 import { OwnershipState } from 'store/ownership/interfaces';
+import OwnershipActionTypes from 'store/ownership/interfaces/actions.interfaces';
 import { RootReducerInterface } from 'store/reducer';
 import { RentalState } from 'store/rental/interfaces';
 import RentalActionTypes from 'store/rental/interfaces/actions.interfaces';

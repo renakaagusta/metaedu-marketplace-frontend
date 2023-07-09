@@ -514,6 +514,19 @@ export default function ONavBar(props: ONavBarProps) {
     })
 
     dispatch({
+      type: RentalActionTypes.GET_RENTAL_BY_OTHER_LIST,
+      payload: {
+        accessToken: authState.accessToken,
+        ownerId: userState.myUserData.id,
+        offset: 0,
+        limit: 100,
+        keyword: '',
+        orderBy: 'created_at',
+        orderOption: 'DESC',
+      }
+    })
+
+    dispatch({
       type: TransactionActionTypes.GET_MY_TRANSACTION_LIST,
       payload: {
         accessToken: authState.accessToken,
@@ -688,6 +701,7 @@ export default function ONavBar(props: ONavBarProps) {
                         {
                           ownershipState.myOwnershipList?.map((ownership, index) => MOwnershipCard({
                             ownership: ownership,
+                            rental: rentalState.rentalsByOther?.find((rental) => rental.tokenId === ownership.tokenId && (new Date(rental.timestamp.time).getTime() > new Date().getTime())),
                             theme: theme,
                             salePrice: salePriceList[index],
                             rentCost: rentCostList[index],

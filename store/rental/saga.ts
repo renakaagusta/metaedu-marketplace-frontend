@@ -83,6 +83,44 @@ function* fetchMyRentalList(data: GetRentalListParams) {
   }
 }
 
+function* fetchRentalByOtherList(data: GetRentalListParams) {
+  try {
+    if (!data.payload) {
+      message.error('Payload is not valid')
+      return
+    }
+
+    yield put({
+      type: RentalActionTypes.SET_GET_RENTAL_BY_OTHER_LIST_STATE,
+      payload: AppState.Loading
+    })
+
+    const response: ApiResponse<GetRentalListResponse> | Error = yield rentalRepository.getRentalList(data.payload)
+
+    if (!isApiResponse(response)) {
+      throw response
+    }
+
+    yield put({
+      type: RentalActionTypes.SET_GET_RENTAL_BY_OTHER_LIST_STATE,
+      payload: AppState.LoadComplete
+    })
+
+    yield put({
+      type: RentalActionTypes.SET_RENTAL_BY_OTHER_LIST,
+      payload: (response.data as GetRentalListResponse).rentals
+    })
+  } catch (err) {
+    yield put({
+      type: RentalActionTypes.SET_GET_RENTAL_BY_OTHER_LIST_STATE,
+      payload: AppState.Error
+    })
+
+    message.error((err as Error).message)
+  }
+}
+
+
 function* updateRental(data: UpdateRentalParams) {
   try {
     if (!data.payload) {
@@ -148,6 +186,7 @@ function* rootSaga(): Generator {
   yield all([
     takeEvery(RentalActionTypes.GET_RENTAL_LIST, fetchRentalList),
     takeEvery(RentalActionTypes.GET_MY_RENTAL_LIST, fetchMyRentalList),
+    takeEvery(RentalActionTypes.GET_RENTAL_BY_OTHER_LIST, fetchRentalByOtherList),
     takeEvery(RentalActionTypes.UPDATE_RENTAL, updateRental),
   ]);
 }

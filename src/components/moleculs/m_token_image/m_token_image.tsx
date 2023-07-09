@@ -1,5 +1,6 @@
 import { Environment, OrbitControls } from '@react-three/drei';
 import { Canvas, useLoader } from '@react-three/fiber';
+import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 
 import AImage from '@/components/atoms/a_image/a_image';
@@ -17,12 +18,18 @@ export default function MTokenImage(props: MTokenImage) {
 
   const Model = () => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    const gltf = useLoader(GLTFLoader, token.image);
+    const gltf = useLoader(GLTFLoader, token.image, (loader) => {
+      const dracoLoader = new DRACOLoader();
+      dracoLoader.setDecoderPath(
+        'https://www.gstatic.com/draco/versioned/decoders/1.4.0/'
+      );
+      loader.setDRACOLoader(dracoLoader);
+    });
 
-    return <primitive object={gltf.scene} scale={4} />;
+    return <primitive object={gltf.scene} scale={3} />;
   };
 
-  if (token.image.includes('.glb')) {
+  if (token.image.includes('.glb') || token.image.includes('.gltf')) {
     return (
       <Canvas shadows>
         <Model />

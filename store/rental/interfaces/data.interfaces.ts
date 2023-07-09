@@ -8,5 +8,7 @@ export interface RentalState {
   rentals: Array<Rental> | null | undefined
   myRentalListState: AppState
   myRentals: Array<Rental> | null | undefined
+  rentalByOtherListState: AppState,
+  rentalsByOther: Array<Rental> | null | undefined
   rentalUpdateState: AppState
 }

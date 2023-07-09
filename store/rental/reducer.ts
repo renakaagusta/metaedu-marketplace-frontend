@@ -8,6 +8,8 @@ export const initialState: RentalState = {
   state: AppState.Initial,
   myRentalListState: AppState.Initial,
   myRentals: undefined,
+  rentalByOtherListState: AppState.Initial,
+  rentalsByOther: undefined,
   rentalListState: AppState.Initial,
   rentals: undefined,
   rentalUpdateState: AppState.Initial
@@ -28,6 +30,16 @@ const rentalReducer = (
       return {
         ...state,
         myRentals: action.payload
+      };
+    case RentalActionTypes.SET_GET_RENTAL_BY_OTHER_LIST_STATE:
+      return {
+        ...state,
+        rentalByOtherListState: action.payload
+      };
+    case RentalActionTypes.SET_RENTAL_BY_OTHER_LIST:
+      return {
+        ...state,
+        rentalsByOther: action.payload
       };
     case RentalActionTypes.SET_GET_RENTAL_LIST_STATE:
       return {

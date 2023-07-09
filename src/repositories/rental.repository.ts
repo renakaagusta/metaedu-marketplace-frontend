@@ -19,6 +19,7 @@ export interface GetRentalListPayload {
   orderBy: string,
   orderOption: string,
   userId?: string,
+  ownerId?: string,
   tokenId?: string
 }
 
@@ -40,7 +41,7 @@ export default class RentalRepository {
 
   public async getRentalList(data: GetRentalListPayload): Promise<ApiResponse<GetRentalListResponse> | Error | undefined> {
     try {
-      const response = await api.get<GetRentalListResponse, AxiosResponse<ApiResponse<GetRentalListResponse>>>(`${API_URL}/v1/rental?offset=${data.offset}&limit=${data.limit}&keyword=${data.keyword}&order_by=${data.orderBy}&order_option=${data.orderOption}&${data.userId ? `user_id=${data.userId}` : ``}`)
+      const response = await api.get<GetRentalListResponse, AxiosResponse<ApiResponse<GetRentalListResponse>>>(`${API_URL}/v1/rental?offset=${data.offset}&limit=${data.limit}&keyword=${data.keyword}&order_by=${data.orderBy}&order_option=${data.orderOption}${data.userId ? `&user_id=${data.userId}` : ``}${data.ownerId ? `&owner_id=${data.ownerId}` : ``}`)
 
       if (!response.data.error) {
         return response.data

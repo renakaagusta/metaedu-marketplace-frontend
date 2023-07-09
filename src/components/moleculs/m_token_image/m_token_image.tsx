@@ -26,7 +26,7 @@ export default function MTokenImage(props: MTokenImage) {
       loader.setDRACOLoader(dracoLoader);
     });
 
-    return <primitive object={gltf.scene} scale={3} />;
+    return <primitive object={gltf.scene} scale={1} />;
   };
 
   if (token.image.includes('.glb') || token.image.includes('.gltf')) {
